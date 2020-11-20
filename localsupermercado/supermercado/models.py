@@ -107,7 +107,7 @@ class DetalleBoleta(models.Model):
 
 
 class Compras(models.Model):
-	id_boleta=models.ForeignKey('Boleta',primary_key=True,on_delete=models.RESTRICT)
+	id_boleta=models.OneToOneField(Boleta, on_delete=models.CASCADE, null=False, blank=False)
 	id_direccion=models.ForeignKey('Direcciones',null=False,on_delete=models.RESTRICT)
 	rut=models.ForeignKey('Cliente',null=False,on_delete=models.RESTRICT)
 	loan_estado =(

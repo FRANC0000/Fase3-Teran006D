@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center col-12 bg-secondary">
+    <div class="bg-secondary">
+        <div class=" col-md-12  text-white">
+            <h1> Inicio de sesión. </h1>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-success" type="submit"> Enviar </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

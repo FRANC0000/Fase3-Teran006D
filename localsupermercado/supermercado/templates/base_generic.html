@@ -35,7 +35,9 @@
 <BODY>
     <header>
   
-        <div class="top"> <img class="img-fluid" src="{% static 'img/logo.png' %}" height="500px" width="500px">
+        <div class="top"> <a href="{% url 'index'%}">
+            <img class="img-fluid" src="{% static 'img/logo.png' %}" height="500px" width="500px">
+        </a>
 
             <div class="iconos">
 
@@ -67,7 +69,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supermercado</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Despensa</a>
                                 <a class="dropdown-item" href="#">Carnes</a>
                                 <a class="dropdown-item" href="#">Vegetales</a>
@@ -77,7 +79,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tecnología</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Smartphones</a>
                                 <a class="dropdown-item" href="#">Televisores</a>
                                 <a class="dropdown-item" href="#">Línea blanca</a>
@@ -87,7 +89,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mascotas</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Juguetes</a>
                                 <a class="dropdown-item" href="#">Alimentos</a>
                                 <a class="dropdown-item" href="#">Otros</a>
@@ -97,7 +99,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vestuario</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Hombre</a>
                                 <a class="dropdown-item" href="#">Mujer</a>
                                 <a class="dropdown-item" href="#">Niños</a>
@@ -110,7 +112,7 @@
         </div>
     </header>
         
-    <div >
+    <div class="vh-100">
          {% block content %} {% endblock %}
     </div>    
 
@@ -120,33 +122,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Opciones </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="mi-formulario" action="perfil.html">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input name="email" id="email " type="email" class="form-control"
-                                aria-describedby="emailHelp" required placeholder="nombre@dominio.cl" required>
 
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input name="password" id="password" type="password" class="form-control"
-                                placeholder="Password" minlength="5" required>
-                        </div>
-                        <button class="btn btn-primary" >Login</button>
-                    </div>
-                </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-
-                    <a class="btn btn-primary" href="{% url 'cliente_create' %}">Registro</a>
-                    <a href="{% url 'boletas'%}" class="btn btn-primary"> Boletas</a>
-                    <a class="btn btn-primary" href="{% url 'clientes' %}">Lista de clientes</a>
+                    <a href="{% url 'login'%}" class="btn btn-primary"> Iniciar Sesión </a>
+                    <a href="{% url 'cliente_create' %}" class="btn btn-success">Registro</a>
+                    <a href="{% url 'boletas'%}" class="btn btn-warning"> Boletas</a>
+                    <a href="{% url 'clientes' %}" class="btn btn-info">Lista de clientes</a>
                 </div>
             </div>
         </div>
