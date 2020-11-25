@@ -8,13 +8,13 @@ class Cliente(models.Model):
 
 	rut = models.CharField(max_length=11, null=False, primary_key=True)
 	dv = models.CharField(max_length=1,null=False)
-	nombres = models.CharField(max_length=50, null=False)
-	apellidoP = models.CharField(max_length=20, null=False)
-	apellidoM = models.CharField(max_length=20, null=False)
-	fcelular = models.BigIntegerField( null=False)
-	fcasa = models.BigIntegerField( null=False)
-	fecha_nacimiento= models.DateField(null=False)
-	email= models.EmailField(max_length=50,default='compras@super.cl',unique=True)
+	nombres = models.CharField('Nombres',max_length=50, null=False)
+	apellidoP = models.CharField('Apellido Paterno',max_length=20, null=False)
+	apellidoM = models.CharField('Apellido Materno',max_length=20, null=False)
+	fcelular = models.BigIntegerField('Celular',null=False)
+	fcasa = models.BigIntegerField('Teléfono',null=False)
+	fecha_nacimiento= models.DateField('Fecha de Nacimiento',null=False)
+	email= models.EmailField('e-Mail',max_length=50,default='compras@super.cl',unique=True)
 
 
 	def __str__(self):
@@ -46,9 +46,9 @@ class Comuna(models.Model):
 class Direcciones(models.Model):
 
   rut= models.ForeignKey('Cliente', null=False,on_delete=models.RESTRICT)
-  id_direccion= models.UUIDField(primary_key=True, default=uuid.uuid4)
-  calle=models.CharField(max_length=50, null=False)
-  numeroC=models.BigIntegerField( null=False)
+  id_direccion= models.UUIDField('Identificador de Dirección',primary_key=True, default=uuid.uuid4)
+  calle=models.CharField('Calle',max_length=50, null=False)
+  numeroC=models.BigIntegerField('Número', null=False)
   id_comuna = models.ForeignKey('Comuna',null=False,on_delete=models.RESTRICT)
   departamento = models.BigIntegerField()
 
@@ -63,16 +63,20 @@ class TipoProducto(models.Model):
 
 
 class Producto(models.Model):
-   id_producto=models.UUIDField(primary_key=True,default=uuid.uuid4)
-   nombreP=models.CharField(max_length=50,null=False)
-   stock=models.BigIntegerField(null=False)
-   precio=models.BigIntegerField(null=False)
+   id_producto=models.UUIDField('Identificador Producto',primary_key=True,default=uuid.uuid4)
+   nombreP=models.CharField('Nombre del Producto',max_length=50,null=False)
+   stock=models.BigIntegerField('Stock', null=False)
+   precio=models.BigIntegerField('Precio',null=False)
    imagen=models.ImageField(upload_to='img/',null=False)
    id_tipo=models.ForeignKey('TipoProducto',null=False,on_delete=models.RESTRICT)
 
    
    def __str__(self):
    	  return self.nombreP
+
+   def get_absolute_url(self):
+	   return reverse('producto-detail',args=[str(self.id_producto,)])
+
 
 
 class Boleta (models.Model):

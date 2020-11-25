@@ -22,7 +22,7 @@ def boletas(request):
         'boletas.html'
         )  
 
-
+#Admin
 class ClienteCreate(CreateView):
     model = Cliente
     fields = '__all__'
@@ -43,4 +43,28 @@ class ClienteDetailView(generic.DetailView):
 class ClienteListView(generic.ListView):
     model = Cliente
     paginate_by = 20
+
+
+class ProductoCreate(CreateView):
+    model = Producto
+    fields = ['nombreP', 'stock', 'precio', 'imagen', 'id_tipo']
+
+class ProductoUpdate(UpdateView):
+    model = Producto
+    fields = ['nombreP', 'stock', 'precio', 'imagen', 'id_tipo']
+    template_name = 'supermercado/producto_update_form.html'
+
+class ProductoDelete(DeleteView):
+    model = Producto
+    success_url=reverse_lazy('index')
+
+class ProductoDetailView(generic.DetailView):
+    model = Producto
+
+class ProductoListView(generic.ListView):
+    model = Producto
+    paginate_by = 20
+
+
+#Usuario
 
