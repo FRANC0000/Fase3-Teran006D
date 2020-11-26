@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center col-12 bg-dark vh-100 vw-100">
+    <div >
+        <div   class=" col-md-12  text-white bg-secondary ">
+        <form method="post">{% csrf_token %}
+            
+                <h1> Actualizar datos de producto</h1>
+                <div class="container">
+                    <label> Identificador Producto :</label>
+                    <input placeholder="{{producto.id_producto}}" disabled="true">
+                    {{ form.as_p }}
+                </div>
+                <div class="container">
+                    <input type="submit" class="btn btn-danger" value="Actualizar">
+                    <a href="{% url 'index' %}" class="btn btn-info"> Inicio </a>
+                    
+                </div>
+                      
+            
+        </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

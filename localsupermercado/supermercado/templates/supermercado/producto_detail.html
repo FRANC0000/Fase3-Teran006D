@@ -1,0 +1,30 @@
+{%extends "base_generic.html"%}
+
+{%block content%}
+
+<div class="row justify-content-center bg-dark vh-100 col-12 ">
+    <div >
+        <div class="container  bg-secondary">
+            <div class="text-white col-md-12">
+                
+                <h2>Producto creado.</h2>
+            </div>
+            <hr>
+            <div class="text-white">
+                <p> Identificador: {{producto.id_producto}}</p>
+                <p> Nombre del producto: {{producto.nombreP}}</p>
+                <p> Stock Ingresado: {{producto.stock}}</p>
+                <p> Precio: $ {{producto.precio}}</p>
+                <p> Identificador: {{producto.id_tipo | capfirst}}</p>
+            </div>
+            <div class=" row  justify-content-center ">
+                <a href="{% url 'index' %}" class="btn btn-info col"> Inicio </a>
+                <a href="{% url 'producto_update' pk=producto.pk %}" class="btn btn-warning col" style="border: 1px whitesmoke groove"> Actualizar producto</a>
+                <a href="{% url 'producto_delete' pk=producto.pk %}" class="btn btn-danger col"> Eliminar producto </a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{%endblock%}
