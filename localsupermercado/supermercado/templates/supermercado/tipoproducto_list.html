@@ -1,8 +1,8 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
-<div class="row justify-content-center col-12 bg-dark vh-100">
-    <div class="col-md-12  text-white bg-secondary">
+<div class="row justify-content-center bg-dark vh-100 col-12">
+    <div >
     	
         <div class="container  bg-secondary">
             <div class="text-white col-md-12">
@@ -12,17 +12,17 @@
             </div>
             <hr>
             <div class="vh-50">
-                {% if producto_list %}
+                {% if tipoproducto_list %}
                 <ul>
 
-	               {% for producto in producto_list %}
+	               {% for tipoproducto in tipoproducto_list %}
 	                <li>
-		               <a href="{{ producto.get_absolute_url }}" class="text-dark">{{ producto}}</a>
+		               <a href="{{ tipoproducto.get_absolute_url }}" class="text-dark">{{ tipoproducto}}</a>
 	                </li>
 	                {% endfor %}
                 </ul>
                 {% else %}
-                   <p>No hay productos registrados.</p>
+                   <p>No hay tipos de producto registrados.</p>
                 {% endif %}   		
             </div>
             

@@ -55,10 +55,13 @@ class Direcciones(models.Model):
 class TipoProducto(models.Model):
 
 	id_tipo=models.UUIDField(primary_key=True,default=uuid.uuid4)
-	tipo=models.CharField(null=False,max_length=50)
+	tipo=models.CharField('Nombre tipo de producto',null=False,max_length=50)
 
 	def __str__(self):
 		return self.tipo
+
+	def get_absolute_url(self):
+	   return reverse('tipoproducto-detail',args=[str(self.id_tipo,)])
 
 
 

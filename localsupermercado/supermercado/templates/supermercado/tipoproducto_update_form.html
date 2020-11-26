@@ -7,10 +7,10 @@
         <div   class=" col-md-12  text-white bg-secondary ">
         <form method="post">{% csrf_token %}
             
-                <h1> Actualizar datos de producto</h1>
+                <h1> Actualizar datos de Tipo de producto</h1>
                 <div class="container">
-                    <label> Identificador Producto :</label>
-                    <input placeholder="{{producto.id_producto}}" disabled="true">
+                    <label> Identificador Tipo de Producto :</label>
+                    <input placeholder="{{tipoproducto.id_tipo}}" disabled="true">
                     {{ form.as_p }}
                 </div>
                 <div class="container">

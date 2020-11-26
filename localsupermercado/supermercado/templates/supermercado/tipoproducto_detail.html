@@ -1,0 +1,26 @@
+{%extends "base_generic.html"%}
+
+{%block content%}
+
+<div class="row justify-content-center bg-dark vh-100 col-12 ">
+    <div >
+        <div class="container  bg-secondary">
+            <div class="text-white col-md-12">
+                
+                <h2>Tipo de producto creado.</h2>
+            </div>
+            <hr>
+            <div class="text-white">
+                <p> Tipo de producto: {{tipoproducto.tipo}}</p>
+            </div>
+            <div class=" row  justify-content-center ">
+                <a href="{% url 'index' %}" class="btn btn-info col"> Inicio </a>
+                <a href="{% url 'tipoproducto_update' pk=tipoproducto.pk %}" class="btn btn-warning col" style="border: 1px whitesmoke groove"> Actualizar tipo producto</a>
+                <a href="{% url 'tipoproducto_delete' pk=tipoproducto.pk %}" class="btn btn-danger col"> Eliminar tipo producto </a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{%endblock%}

@@ -3,12 +3,12 @@
 {%block content%}
 
 <div class="row justify-content-center col-12 bg-dark vh-100">
-    <div class="col p-3 text-white bg-dark vh-100">
+    <div class="col-md-12  text-white bg-secondary">
         <form action="" method="POST">
             {%csrf_token%}
             
-            <h1> Eliminar Producto </h1>
-            <p> ¿Estás seguro de que quieres eliminar el producto: {{producto}}? </p>
+            <h1> Eliminar Tipo de Producto </h1>
+            <p> ¿Estás seguro de que quieres eliminar el tipo de producto: {{tipoproducto}}? </p>
             
             <input class="btn btn-danger" type="submit" value="Eliminar">
         </form>

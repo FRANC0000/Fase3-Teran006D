@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Producto, Cliente
+from . models import Producto, Cliente, TipoProducto
 from django.views import generic
 
 #formularios
@@ -23,25 +23,23 @@ def boletas(request):
         )  
 
 #Admin
-class ClienteCreate(CreateView):
-    model = Cliente
-    fields = '__all__'
+class TipoProductoCreate(CreateView):
+    model = TipoProducto
+    fields = ['tipo']
 
-class ClienteUpdate(UpdateView):
-    model = Cliente
-    fields = ['nombres','apellidoP', 'apellidoM', 'fcelular', 'fcasa','email']
-    template_name_suffix = '_update_form'
+class TipoProductoUpdate(UpdateView):
+    model = TipoProducto
+    fields = ['tipo']
 
-class ClienteDelete(DeleteView):
-    model = Cliente
-    success_url = reverse_lazy('index')
+class TipoProductoDelete(DeleteView):
+    model = TipoProducto
+    success_url=reverse_lazy('index')
 
-class ClienteDetailView(generic.DetailView):
-    model = Cliente
+class TipoProductoDetailView(generic.DetailView):
+    model = TipoProducto
 
-
-class ClienteListView(generic.ListView):
-    model = Cliente
+class TipoProductoListView(generic.ListView):
+    model = TipoProducto
     paginate_by = 20
 
 
@@ -67,4 +65,24 @@ class ProductoListView(generic.ListView):
 
 
 #Usuario
+class ClienteCreate(CreateView):
+    model = Cliente
+    fields = '__all__'
+
+class ClienteUpdate(UpdateView):
+    model = Cliente
+    fields = ['nombres','apellidoP', 'apellidoM', 'fcelular', 'fcasa','email']
+    template_name_suffix = '_update_form'
+
+class ClienteDelete(DeleteView):
+    model = Cliente
+    success_url = reverse_lazy('index')
+
+class ClienteDetailView(generic.DetailView):
+    model = Cliente
+
+
+class ClienteListView(generic.ListView):
+    model = Cliente
+    paginate_by = 20
 
