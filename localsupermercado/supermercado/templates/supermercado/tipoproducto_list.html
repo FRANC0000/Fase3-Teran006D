@@ -1,26 +1,50 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
-<div class="row justify-content-center bg-dark vh-100 col-12">
-    <div >
+<div class="row justify-content-center col-12 vh-50">
+    <div class="col-md-12  text-white bg-secondary">
     	
-        <div class="container  bg-secondary">
+        <div class="container  bg-secondary vw-100">
             <div class="text-white col-md-12">
             	<h1>Lista de productos</h1>
                 
                 
             </div>
             <hr>
-            <div class="vh-50">
+            <div class="vh-50 text-white">
                 {% if tipoproducto_list %}
                 <ul>
 
 	               {% for tipoproducto in tipoproducto_list %}
 	                <li>
-		               <a href="{{ tipoproducto.get_absolute_url }}" class="text-dark">{{ tipoproducto}}</a>
+		               <a  style="text-decoration: none;" href="{{ tipoproducto.get_absolute_url }}" class="text-white">{{ tipoproducto}}</a>
 	                </li>
 	                {% endfor %}
                 </ul>
+                {% if is_paginated %}
+                <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+
+                {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+                </ul>
+                {% endif %}
+                
                 {% else %}
                    <p>No hay tipos de producto registrados.</p>
                 {% endif %}   		

@@ -4,23 +4,47 @@
 <div class="row justify-content-center col-12 bg-dark vh-100">
     <div class="col-md-12  text-white bg-secondary">
     	
-        <div class="container  bg-secondary">
+        <div class="container  bg-secondary text-white ">
             <div class="text-white col-md-12">
             	<h1>Lista de productos</h1>
                 
                 
             </div>
             <hr>
-            <div class="vh-50">
+            <div class="vh-50 text-white">
                 {% if producto_list %}
                 <ul>
 
 	               {% for producto in producto_list %}
 	                <li>
-		               <a href="{{ producto.get_absolute_url }}" class="text-dark">{{ producto}}</a>
+		               <a  style="text-decoration: none;" href="{{ producto.get_absolute_url }}" class="text-white">{{ producto}}</a>
 	                </li>
 	                {% endfor %}
                 </ul>
+                {% if is_paginated %}
+                <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+
+                {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+                </ul>
+                {% endif %}
+
                 {% else %}
                    <p>No hay productos registrados.</p>
                 {% endif %}   		
