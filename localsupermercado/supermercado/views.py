@@ -10,17 +10,10 @@ from django.urls import reverse_lazy
 def index(request):
 	num_productos = Producto.objects.all()
 
-	return render(
-      request,
-        'index.html',
-        context={'num_productos':num_productos},
-
-		)
+	return render(request,'index.html', context={'num_productos':num_productos},)
+    
 def boletas(request):
-    return render(
-        request,
-        'boletas.html'
-        )  
+    return render(request,'boletas.html')  
 
 #Admin
 class TipoProductoCreate(CreateView):

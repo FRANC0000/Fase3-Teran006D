@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns =[
 
-path('',views.index,name='index'),
+path('',views.index ,name='index'),
 
 #cliente
 path('cliente/<int:pk>', views.ClienteDetailView.as_view(), name="cliente-detail"),

@@ -24,6 +24,8 @@ class Cliente(models.Model):
 	def get_absolute_url(self):
 	   return reverse('cliente-detail',args=[str(self.rut)])
 
+	
+
 class Region(models.Model):
 	id_region=models.UUIDField(primary_key=True,default=uuid.uuid4)
 	nombreR=models.CharField(max_length=50,null=False)
@@ -71,7 +73,7 @@ class Producto(models.Model):
    stock=models.BigIntegerField('Stock', null=False)
    precio=models.BigIntegerField('Precio',null=False)
    imagen=models.ImageField(upload_to='img/',null=False)
-   id_tipo=models.ForeignKey('TipoProducto',null=False,on_delete=models.RESTRICT)
+   id_tipo=models.ForeignKey('TipoProducto',null=True,on_delete=models.RESTRICT, blank=True)
 
    
    def __str__(self):
